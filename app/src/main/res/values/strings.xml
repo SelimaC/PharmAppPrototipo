@@ -1,8 +1,21 @@
 <resources>
     <string name="app_name">PharmApp</string>
+    <string name="today">Oggi</string>
+    <string name="teraphy">Terapie</string>
+    <string name="journey">Diario</string>
+    <string name="doctors">Dottori</string>
+    <string name="users">Pazienti</string>
+
+    <string name="code">Codice paziente</string>
+    <string name="pass">Password</string>
+    <string name="login">VAI</string>
+    <string name="welcome">Benvenuto in PharmApp,</string>
+    <string name="insertCode">prima di poter utilizzare questa applicazione
+                        inserisci il codice paziente nel caso sia stato fornito dal tuo medico</string>
+    <string name="insertPass">Inserisci la password</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Impostazioni</string>
 </resources>
