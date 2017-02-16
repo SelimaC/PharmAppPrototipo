@@ -9,16 +9,16 @@ import java.util.List;
 public class Schedule {
     private String time;
     private float amount;
-    private int therapy;
+    private int idTherapy;
     private List<Assumption> taken;
 
     public Schedule() {
     }
 
-    public Schedule(String time, float amount, int therapy,  List<Assumption> taken) {
+    public Schedule(String time, float amount, int idTherapy,  List<Assumption> taken) {
         this.setTime(time);
         this.setAmount(amount);
-        this.setTherapy(therapy);
+        this.setTherapy(idTherapy);
         this.setTaken(taken);
     }
 
@@ -39,11 +39,11 @@ public class Schedule {
     }
 
     public int getTherapy() {
-        return therapy;
+        return idTherapy;
     }
 
-    public void setTherapy(int therapy) {
-        this.therapy = therapy;
+    public void setTherapy(int idTherapy) {
+        this.idTherapy = idTherapy;
     }
 
 

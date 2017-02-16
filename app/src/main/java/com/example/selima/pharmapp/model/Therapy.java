@@ -17,12 +17,13 @@ public class Therapy {
     private boolean notice;
     private boolean suspended;
     private List<Schedule> times;
+    private Medicine medicine;
 
     public Therapy() {
     }
 
     public Therapy(int id, List<Schedule> times, boolean suspended, boolean notice, int limitStock, int stock,
-                   int duration, String startDate, int dayFrequency, int dailyFrequency) {
+                   int duration, String startDate, int dayFrequency, int dailyFrequency,  Medicine medicine) {
         this.id = id;
         this.setTimes(times);
         this.suspended = suspended;
@@ -33,6 +34,7 @@ public class Therapy {
         this.startDate = startDate;
         this.dayFrequency = dayFrequency;
         this.dailyFrequency = dailyFrequency;
+        this.medicine = medicine;
     }
 
     public int getId() {
@@ -114,5 +116,14 @@ public class Therapy {
 
     public void setTimes(List<Schedule> times) {
         this.times = times;
+    }
+
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
 }
