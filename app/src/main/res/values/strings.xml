@@ -6,6 +6,7 @@
     <string name="doctors">Dottori</string>
     <string name="users">Pazienti</string>
 
+    <string name="exit">Clicca di nuovo per uscire!</string>
     <string name="code">Codice paziente</string>
     <string name="pass">Password</string>
     <string name="login">VAI</string>

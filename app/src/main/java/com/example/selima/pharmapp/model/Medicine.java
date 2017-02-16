@@ -5,7 +5,7 @@ package com.example.selima.pharmapp.model;
  */
 
 public class Medicine {
-    private String code;
+    private int id;
     private String name;
     private String unit;
     private String instructions;
@@ -14,21 +14,21 @@ public class Medicine {
     public Medicine() {
     }
 
-    public Medicine(String name, String code, String unit, String instructions, boolean standard) {
+    public Medicine(String name, int id, String unit, String instructions, boolean standard) {
         this.setName(name);
-        this.setCode(code);
+        this.setId(id);
         this.setUnit(unit);
         this.setInstructions(instructions);
         this.setStandard(standard);
     }
 
 
-    public String getCode() {
-        return code;
+    public int getId() {
+        return id;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
