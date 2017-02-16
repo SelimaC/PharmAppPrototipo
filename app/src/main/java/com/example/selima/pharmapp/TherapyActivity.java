@@ -16,32 +16,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
+public class TherapyActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_therapy);
 
         /* This code is used to show WelcomeActivity only once, when the app is started*/
-        SharedPreferences pref = getSharedPreferences("ActivityPREF",    Context.MODE_PRIVATE);
-        if(pref.getBoolean("activity_executed", false)){
-
-        } else {
-            Intent intent = new Intent(this, WelcomeActivity.class);
-            startActivity(intent);
-            finish();
-            SharedPreferences.Editor ed = pref.edit();
-            ed.putBoolean("activity_executed", true);
-            ed.commit();
-        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle(R.string.today);
+        getSupportActionBar().setTitle(R.string.teraphy);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

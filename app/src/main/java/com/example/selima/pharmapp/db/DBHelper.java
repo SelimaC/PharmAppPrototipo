@@ -10,10 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "MyDBName.db";
+    public static final String DATABASE_NAME = "PharmAppDB";
 
     public DBHelper(Context context){
         super(context,DATABASE_NAME,null,1);
+
     }
 
     @Override
@@ -26,6 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 
 
     /* Put here helper methods like inert data and execute query*/
