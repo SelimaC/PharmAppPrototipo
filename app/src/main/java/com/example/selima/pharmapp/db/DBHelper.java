@@ -1,4 +1,4 @@
-package com.example.selima.pharmapp.com.example.selima.pharmapp.db;
+package com.example.selima.pharmapp.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
