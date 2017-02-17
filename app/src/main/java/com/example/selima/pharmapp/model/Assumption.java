@@ -7,7 +7,7 @@ package com.example.selima.pharmapp.model;
 public class Assumption {
     private int id;
     private String date;
-    private boolean presa;
+    private boolean taken;
     private int delay;
     private int humor;
     private float pain;
@@ -22,7 +22,7 @@ public class Assumption {
         this.setPain(pain);
         this.setHumor(humor);
         this.setDelay(delay);
-        this.setPresa(presa);
+        this.setTaken(taken);
         this.setDate(date);
     }
 
@@ -43,12 +43,12 @@ public class Assumption {
         this.date = date;
     }
 
-    public boolean isPresa() {
-        return presa;
+    public boolean isTaken() {
+        return taken;
     }
 
-    public void setPresa(boolean presa) {
-        this.presa = presa;
+    public void setTaken(boolean taken) {
+        this.taken = taken;
     }
 
     public int getDelay() {
