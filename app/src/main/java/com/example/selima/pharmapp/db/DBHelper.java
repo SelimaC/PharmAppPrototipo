@@ -2,6 +2,7 @@ package com.example.selima.pharmapp.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -61,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
     /* Put here helper methods like inert data and execute query*/
 
 
-    public void insertUser(User user)
+    public long insertUser(User user)
     {
 
         String crypt=null;
@@ -76,9 +77,10 @@ public class DBHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
         patient.put("password", crypt);
-        db.insert("Patient", null, patient);//or db.insertOrThrow("Patient", null, patient);
+        return db.insert("Patient", null, patient);//or db.insertOrThrow("Patient", null, patient);
+        //se va a buon fine restituisce l'id altrimenti se non viene salvato nel db restituisce -1
     }
-    public void insertOccasionalMedicine(OccasionalMedicine occasionalMedicine, String codUser)
+    public long insertOccasionalMedicine(OccasionalMedicine occasionalMedicine, String codUser)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         //inserimento farmaco occasionale
@@ -89,10 +91,10 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("date", occasionalMedicine.getDate());
         o.put("time",occasionalMedicine.getTime() );
         o.put("patient", codUser);
-        db.insert("OccasionalMedicine", null, o);
+        return db.insert("OccasionalMedicine", null, o);
     }
 
-    public void insertTherapy(Therapy therapy, String codUser, Integer idMedicine)
+    public long insertTherapy(Therapy therapy, String codUser, Integer idMedicine)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues o= new ContentValues();
@@ -106,11 +108,11 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("limitStock", therapy.getLimitStock());
         o.put("notificationStock", therapy.isNotice());
         o.put("patient", codUser );
-        db.insert("Therapy", null, o);
+        return db.insert("Therapy", null, o);
     }
 
 
-    public void insertMedicine(Medicine medicine)
+    public long insertMedicine(Medicine medicine)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues o= new ContentValues();
@@ -119,10 +121,10 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("unit", medicine.getUnit());
         o.put("instructions", medicine.getInstructions());
         o.put("standard", medicine.isStandard());
-        db.insert("Medicine", null, o);
+        return db.insert("Medicine", null, o);
     }
 
-    public void insertSchedule(Schedule schedule)
+    public long insertSchedule(Schedule schedule)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues o= new ContentValues();
@@ -130,10 +132,10 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("therapy",schedule.getTherapy() );
         o.put("time", schedule.getTime());
         o.put("amount", schedule.getAmount());
-        db.insert("Schedule", null, o);
+        return db.insert("Schedule", null, o);
     }
 
-    public void insertAssumption(Assumption assumption, Integer idTherapy, String time)
+    public long insertAssumption(Assumption assumption, Integer idTherapy, String time)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues o= new ContentValues();
@@ -146,10 +148,10 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("notes", assumption.getNotes());
         o.put("time", time );
         o.put("therapy", idTherapy);
-        db.insert("Assumption", null, o);
+        return db.insert("Assumption", null, o);
     }
 
-    public void insertTag(Tag tag)
+    public long insertTag(Tag tag)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues o= new ContentValues();
@@ -160,7 +162,7 @@ public class DBHelper extends SQLiteOpenHelper {
         o.put("batteryLevel", tag.getBatteryLevel());
         o.put("therapy",tag.getTeraphy() );
         o.put("patient", tag.getUser());
-        db.insert("Tag", null, o);
+        return db.insert("Tag", null, o);
     }
 
     public static String md5(String s) throws NoSuchAlgorithmException
@@ -173,7 +175,20 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean selectTherapiesById(Integer id)
+    {
+        boolean bool = false;
 
+
+        Cursor cursor = getReadableDatabase().rawQuery("select * from Therapy where idTherapy = ?", new String[]{String.valueOf(id)});
+
+        if (cursor != null) {
+            if (cursor.moveToFirst())
+                bool = true;
+            cursor.close();
+        }
+        return bool;
+    }
 
 
 
