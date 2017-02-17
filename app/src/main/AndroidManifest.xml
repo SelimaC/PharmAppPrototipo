@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".NewOccasionalMedicineActivity" />
+        <activity android:name=".NewTeraphyActivity"></activity>
     </application>
 
 </manifest>

@@ -19,4 +19,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Impostazioni</string>
+    <string name="newOccasionalMedicine">Farmaco Occasionale</string>
+    <string name="newTherapy">Nuova Terapia</string>
+    <string name="newDoctor">Nuovo Dottore</string>
+
+    <string name="morning">Mattina</string>
+    <string name="afternoon">Pomeriggio</string>
+    <string name="evening">Sera</string>
+    <string name="night">Notte</string>
+
 </resources>
