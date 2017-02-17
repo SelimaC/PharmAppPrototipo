@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity
 
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
+
+    int result = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,10 +118,10 @@ public class MainActivity extends AppCompatActivity
                     startActivityForResult(i, 1);
                 }
             });
-        } else if (id == R.id.nav_teraphy) {
+        } else if (id == R.id.nav_therapy) {
             fragment = new TherapyFragment();
             tag = "THERAPY";
-            getSupportActionBar().setTitle(R.string.teraphy);
+            getSupportActionBar().setTitle(R.string.therapy);
             fab.show();
             fab.setImageResource(R.drawable.plus);
             fab.setOnClickListener(new View.OnClickListener() {
@@ -166,58 +169,26 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
-        getSupportActionBar().setTitle(R.string.today);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
-                startActivityForResult(i, 1);
-            }
-        });
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.getMenu().getItem(0).setChecked(true);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-        switch (requestCode){
-            case 1:
-                transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
-                getSupportActionBar().setTitle(R.string.today);
-
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
-                        startActivityForResult(i, 1);
-                    }
-                });
-
-                navigationView.getMenu().getItem(0).setChecked(true);
-            case 2:
+        Log.d("result",""+ result);
+        switch (result){
+            case 2 :
                 transaction.replace(R.id.container, new TherapyFragment(),"THERAPY").commit();
-                getSupportActionBar().setTitle(R.string.teraphy);
+                getSupportActionBar().setTitle(R.string.therapy);
 
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                        Intent i = new Intent(getApplicationContext(), NewTeraphyActivity.class);
                         startActivityForResult(i, 2);
                     }
                 });
 
                 navigationView.getMenu().getItem(1).setChecked(true);
-
-            case 5:
+                break;
+            default :
                 transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
                 getSupportActionBar().setTitle(R.string.today);
 
@@ -230,7 +201,21 @@ public class MainActivity extends AppCompatActivity
                 });
 
                 navigationView.getMenu().getItem(0).setChecked(true);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("code",""+ requestCode);
+        switch (requestCode){
+            case 1:
+                  result = 1; break;
+            case 2:
+                  result = 2; break;
+            case 5:
+                  result = 5; break;
             default:
+                  result = 0;
         }
     }
 

@@ -10,4 +10,77 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.selima.pharmapp.NewOccasionalMedicineActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameOccasionalMedicine"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="@string/nameMedicine"
+            android:text=""
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:inputType="textCapSentences"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textSize="25dp"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:paddingBottom="15dp"
+            android:layout_marginBottom="30dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/amount"
+             android:textSize="20dp"
+             android:layout_marginLeft="20dp"/>
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/minuscircle"
+            android:clickable="true"
+            android:layout_marginLeft="30dp"
+            />
+        <EditText
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount"
+            android:textColor="@color/colorPrimaryDark"
+            android:hint="@string/amount"
+            android:text="1.00"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:textSize="25dp"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:paddingBottom="15dp"
+            />
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/pluscircle"
+                android:clickable="true"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
 </RelativeLayout>
