@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PharmApp</string>
     <string name="today">Oggi</string>
-    <string name="teraphy">Terapie</string>
+    <string name="therapy">Terapie</string>
     <string name="journey">Diario</string>
     <string name="doctors">Dottori</string>
     <string name="users">Pazienti</string>

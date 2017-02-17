@@ -7,9 +7,9 @@
             android:icon="@drawable/timetable"
             android:title="@string/today" />
         <item
-            android:id="@+id/nav_teraphy"
+            android:id="@+id/nav_therapy"
             android:icon="@drawable/medical_bag"
-            android:title="@string/teraphy" />
+            android:title="@string/therapy" />
         <item
             android:id="@+id/nav_journey"
             android:icon="@drawable/calendar_text"
