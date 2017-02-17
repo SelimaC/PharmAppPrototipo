@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -45,12 +46,11 @@ public class MainActivity extends AppCompatActivity
             ed.commit();
         }
 
-
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
         if (savedInstanceState == null)
         {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new TodayFragment()).commit();
-
+           transaction.add(R.id.container, new TodayFragment(),"TODAY").commit();
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -62,8 +62,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                startActivityForResult(i, 1);
             }
         });
 
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Log.d("FRAGMENT", "f : "+ getActiveFragment());
     }
 
 
@@ -95,32 +99,139 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
+        String tag = "";
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         if (id == R.id.nav_today) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new TodayFragment()).commit();
+            fragment = new TodayFragment();
+            tag = "TODAY";
             getSupportActionBar().setTitle(R.string.today);
+            fab.show();
+            fab.setImageResource(android.R.drawable.ic_menu_edit);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                    startActivityForResult(i, 1);
+                }
+            });
         } else if (id == R.id.nav_teraphy) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new TherapyFragment()).commit();
+            fragment = new TherapyFragment();
+            tag = "THERAPY";
             getSupportActionBar().setTitle(R.string.teraphy);
+            fab.show();
+            fab.setImageResource(R.drawable.plus);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(getApplicationContext(), NewTeraphyActivity.class);
+                    startActivityForResult(i, 2);
+                }
+            });
         } else if (id == R.id.nav_journey) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new JourneyFragment()).commit();
+            fragment = new JourneyFragment();
+            tag = "JOURNEY";
             getSupportActionBar().setTitle(R.string.journey);
+            fab.hide();
         } else if (id == R.id.nav_doctors) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new DoctorsFragment()).commit();
+            fragment = new DoctorsFragment();
+            tag = "DOCTORS";
             getSupportActionBar().setTitle(R.string.doctors);
+            fab.show();
+            fab.setImageResource(R.drawable.plus);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                 Snackbar.make(view, R.string.newDoctor, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                }
+            });
         } else if (id == R.id.nav_settings) {
             Intent i = new Intent(this, SettingsActivity.class);
-            startActivity(i);
+            startActivityForResult(i, 5);
         }
 
+        if(!tag.equals("")) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, fragment, tag).commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
+        getSupportActionBar().setTitle(R.string.today);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                startActivityForResult(i, 1);
+            }
+        });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        switch (requestCode){
+            case 1:
+                transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
+                getSupportActionBar().setTitle(R.string.today);
+
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                        startActivityForResult(i, 1);
+                    }
+                });
+
+                navigationView.getMenu().getItem(0).setChecked(true);
+            case 2:
+                transaction.replace(R.id.container, new TherapyFragment(),"THERAPY").commit();
+                getSupportActionBar().setTitle(R.string.teraphy);
+
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                        startActivityForResult(i, 2);
+                    }
+                });
+
+                navigationView.getMenu().getItem(1).setChecked(true);
+
+            case 5:
+                transaction.replace(R.id.container, new TodayFragment(),"TODAY").commit();
+                getSupportActionBar().setTitle(R.string.today);
+
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(getApplicationContext(), NewOccasionalMedicineActivity.class);
+                        startActivityForResult(i, 1);
+                    }
+                });
+
+                navigationView.getMenu().getItem(0).setChecked(true);
+            default:
+        }
     }
 
 }
