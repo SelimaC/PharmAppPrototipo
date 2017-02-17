@@ -10,15 +10,28 @@
     <string name="code">Codice paziente</string>
     <string name="pass">Password</string>
     <string name="login">VAI</string>
-    <string name="welcome">Benvenuto in PharmApp,</string>
-    <string name="insertCode">prima di poter utilizzare questa applicazione
-                        inserisci il codice paziente nel caso sia stato fornito dal tuo medico</string>
+    <string name="welcome">Benvenuto in PharmApp!</string>
+    <string name="insertCode">Prima di poter utilizzare questa applicazione
+                        inserisci il codice paziente nel caso sia stato fornito dal tuo medico, oppure
+                        inserisci un nome utente
+    </string>
     <string name="insertPass">Inserisci la password</string>
+
+    <string name="nameMedicine">Nome farmaco</string>
+    <string name="amount">Quantità</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Impostazioni</string>
+    <string name="notice_settings">Impostazioni notifiche</string>
+    <string name="help_settings">Aiuto e supporto</string>
+    <string name="profile_settings">Profilo</string>
+    <string name="jolly_settings">Imposta tag jolly</string>
+    <string name="title">Informazioni</string>
+    <string name="message">Il tag jolly è uno speciale tag che verrà associato a tutte le terapie.</string>
+
+
     <string name="newOccasionalMedicine">Farmaco Occasionale</string>
     <string name="newTherapy">Nuova Terapia</string>
     <string name="newDoctor">Nuovo Dottore</string>

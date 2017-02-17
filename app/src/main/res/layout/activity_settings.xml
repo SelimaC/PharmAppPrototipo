@@ -11,4 +11,146 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.selima.pharmapp.SettingsActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/notice"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/bellring"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/notice_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/notice_settings"
+                android:textSize="23dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/help"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/help"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/help_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/help_settings"
+                android:textSize="23dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/editprofile"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/profile_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_settings"
+                android:textSize="23dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/jolly"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/sticker"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/jolly_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jolly_settings"
+                android:textSize="23dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:id="@+id/info"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_menu_info_details"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
 </RelativeLayout>
